@@ -1,3 +1,5 @@
+//Compilar con : g++ quick_sort.cpp lector.cpp -o quick_sort
+
 #include "lector.h"
 
 #include <iostream>
@@ -5,6 +7,7 @@
 #include <cstdlib>
 #include <vector>
 #include <string>
+#include <algorithm>
 
 using namespace std;
 
@@ -41,6 +44,9 @@ void quick_sort(vector<int32_t>& arr, int left, int right){
 
 int main(int argc, char** argv){
 
+    //Inicializamos la semilla para números aleatorios
+    srand(time(0));
+    
     // Si no hay suficientes argumentos, terminamos la ejecución
     if(argc < 2){
         cerr << "Usage: " << argv[0] << " <archivo.bin>" << endl;
@@ -56,13 +62,6 @@ int main(int argc, char** argv){
     // Obtenemos el tamaño del vector
     int n = valores.size();
 
-    // Llenamos el arreglo a ordenar con valores aleatorios 
-    /*int *valores = new int[n];
-    srand(time(0));
-    for(int i=0; i < n; i++){
-        valores[i] = rand() % 1000;
-    }*/
-
     //Tomamos el tiempo de inicio
     auto start = chrono::high_resolution_clock::now();
 
@@ -71,12 +70,6 @@ int main(int argc, char** argv){
 
     //Tomamos el tiempo de fin
     auto end = chrono::high_resolution_clock::now();
-
-    //Impresion de los primeros 100000 elementos
-    for(int i = 0; i < 100000; i++){
-        cout << valores[i] << " ";
-    }
-    cout << endl;
 
     //Calculamos el tiempo transcurrido
     double running_time = chrono::duration_cast<chrono::nanoseconds>(end - start).count();

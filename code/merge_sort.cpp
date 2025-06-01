@@ -1,3 +1,5 @@
+//Compilar con: g++ -o merge_sort merge_sort.cpp lector.cpp
+
 #include "lector.h"
 
 #include <iostream>
@@ -78,13 +80,6 @@ int main(int argc, char** argv){
     // Obtenemos el tamaño del vector
     int n = valores.size();
 
-    // Llenamos el arreglo a ordenar con valores aleatorios 
-    /*int *valores = new int[n];
-    srand(time(0));
-    for(int i=0; i < n; i++){
-        valores[i] = rand() % 1000;
-    }*/
-
     //Tomamos el tiempo de inicio
     auto start = chrono::high_resolution_clock::now();
 
@@ -93,12 +88,6 @@ int main(int argc, char** argv){
 
     //Tomamos el tiempo de fin
     auto end = chrono::high_resolution_clock::now();
-
-    //Imprimimos el arreglo ordenado
-    for(int i = 0; i < n; i++){
-        cout << valores[i] << " ";
-    }
-    cout << endl;
 
     //Calculamos el tiempo transcurrido
     double running_time = chrono::duration_cast<chrono::nanoseconds>(end - start).count();

@@ -1,12 +1,12 @@
-//Compilar con: g++ -o insertion_sort insertion_sort.cpp lector.cpp
+//Compilar con: g++ -o STL_sort STL_sort.cpp lector.cpp
+
+#include "lector.h"
 
 #include <iostream>
 #include <chrono>
-#include <cstdlib>
 #include <vector>
 #include <string>
-
-#include "lector.h"
+#include <algorithm>
 
 using namespace std;
 
@@ -31,18 +31,7 @@ int main(int argc, char** argv){
     auto start = chrono::high_resolution_clock::now();
 
     //Comenzamos la ejecucion del algoritmo
-
-    for(int i = 1; i < n; i++){ //El iterador comienza en 1 porque el primer elemento "ya está ordenado"
-        int act = valores[i]; //Guardamos el valor a insertar
-        int in = i;
-        int fin = i - 1;
-        while(fin >= 0 && act < valores[fin]){ //Mientras el elemento a insertar sea menor que el elemento en la posicion fin
-            valores[in] = valores[fin]; //Desplazamos el elemento hacia la derecha
-            in--;
-            fin--;
-        }
-        valores[in] = act; //Insercion del elemento en la posision correcta
-    }
+    sort(valores.begin(), valores.end());
 
     //Tomamos el tiempo de fin
     auto end = chrono::high_resolution_clock::now();
